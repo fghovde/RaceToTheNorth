@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>RttN boardgame</title>
+	<meta name="author" content="Fredrik Hovde">
+	<meta name="description" content="GoT Boardgame - Noroff FEU2 semester project">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="icon" type="image/x-icon" href=""/>
+</head>
+
+<body>
+	<main>
+        <div class="modal" id="modal">
+            <div class="modalContent">
+                <span class="modalClose">&times;</span>
+                <img id="modalIcon" src="" width="50%" height="50%">
+                <h3 id="modalHeading" class="modalHeading">Ambush</h3>
+                <p id="modalText" class="modalText">You got ambushed in the woods near Sherringham.</p>
+            </div>
+       </div>
+        <!--
+        <div class="modal" id="helpModal" style="display: block">
+            <div class="modalContent">
+                <span class="modalClose">&times;</span>
+                <img id="modalIcon" src="gfx/icons/help.png" width="50%" height="50%">
+                <h3 class="modalHeading">Help</h3>
+                <p class="modalText"><em>About the game:</em> Bla bla.</p>
+                <p class="modalText"><em>Credits:</em> Bla bla.</p>
+            </div>
+       </div>
+        -->
+        <div class="board">
+            <div class="mapBox">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="map" viewBox="0 0 1242 2208">
+                <defs>
+                   <filter id="shadow" x="0" y="0" width="200%" height="200%">
+                      <feOffset result="offOut" in="SourceAlpha" dx="3" dy="2" />
+                      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="2" />
+                      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+                    </filter>
+                </defs>
+                <g>
+                    <g id="gameGfx">
+                        <g id="map">
+                            <image href="gfx/map.svg" height="100%" width="100%"/>
+                            <g>
+                                <svg viewBox="-404 -510 510 510" filter="url(#shadow)">
+                                    <image href="" height="50px" id="token_2" class="token"/>
+                                </svg>
+                                <svg viewBox="-399 -510 510 510" filter="url(#shadow)">
+                                    <image href="" height="50px" id="token_1" class="token"/>
+                                </svg>
+                            </g>
+                        </g>
+                    </g>
+                </g>  
+                </svg>
+            </div>
+            <nav class="controls">
+                <div id="playersTurn" class="playersTurn">Its Player ONE's turn</div>
+                <button role="button" class="playBtn" id="playBtn" aria-label="Roll dice"></button>
+                <div id="diceDisplay" class="diceDisplay"></div>
+                <div id="bonusDisplay" class="bonus"></div>
+            </nav>
+        </div>
+	</main>
+	<script type="text/javascript" src="js/game.js"></script>
+</body>
+
+</html>

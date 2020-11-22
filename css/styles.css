@@ -1,0 +1,238 @@
+body {
+    background-color: #102737;
+    color: #fff;
+    height: 96vh;
+    margin: 0 auto;
+    overflow: hidden;
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+.logo {
+    max-width: 1024px;
+}
+.logoContainer {
+    opacity: 1;
+    position: fixed;
+    padding: 6%;
+    margin: 4%;
+    top: 15%;
+    left: 0;
+    width: 80%;
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 50px;
+    font-weight: 900;
+    color: #cc9900;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 2%;
+    padding: 2%;
+    width: 96%;
+}
+.characterBtn {
+    flex: 0 0 70px;
+    color: #fff;
+    margin: 0 2%;
+    padding: 1%;
+    min-width: 280px;
+    background-color: #85af0d;
+    border: 5px solid #99CC00;
+    border-radius: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+}
+.characterBtn:hover {
+    background-color: #102737;
+    border-color: #3b677a;
+    cursor: pointer;
+}
+.playBtn, .playBtn:focus {
+    flex: 0 0 70px;
+    color: #fff;
+    margin: 0 2%;
+    padding: 0;
+    min-width: 100px;
+    min-height: 100px;
+    background-image: url('../gfx/icons/dice_3d.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #85af0d;
+    border: 5px solid #99CC00;
+    border-radius: 50%;
+}
+.playBtn:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 1px #3b677a;
+    /*
+    background-color: #102737;
+    border-color: #3b677a;
+    */
+}
+.playBtn:disabled {
+    background-color: #808080;
+    border-color: #b3b3b3;
+    box-shadow: none; 
+}
+.playersTurn {
+    flex: 1;
+    text-align: right;
+    font-size: 1.2rem;
+    margin-top:20px;
+}
+.map {
+    position: absolute;
+    max-height: 99vh;
+    top: 0;
+    overflow: hidden;
+}
+.mapBox {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+.token {
+    -webkit-transition: 2s ease-in-out;
+    -moz-transition: 2s ease-in-out;
+    -ms-transition: 2s ease-in-out;
+    -o-transition: 2s ease-in-out;
+    transition: 2s ease-in-out;
+}
+.diceDisplay {
+    flex: 1;
+    height: 50px;
+    font-size: 4rem;
+    font-weight: 900;
+    opacity: 0;
+    color: #99CC00;
+    margin-top: 10px;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+.bonus {
+    opacity: 0;
+    z-index: 3;
+    position: fixed;
+    padding: 6%;
+    margin: 0;
+    bottom: 25%;
+    width: 50%;
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #cc9900;
+    border-radius: 40px;
+    text-shadow: 0px 0px 20px #000;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+    background-color: rgba(0,0,0,0.5);
+}
+.fade {
+    opacity: 1;
+}
+.modal {
+    z-index: 2;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.5);
+}
+.modalContent {
+    background-color: #24475b;
+    margin: 2% auto;
+    padding: 20px;
+    border: 10px solid #3b677a;
+    border-radius: 40px;
+    width: 75%;
+    text-align: center;
+    max-width: 650px;
+}
+.modalHeading {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin: 20px 0 0 0;
+}
+.modalText {
+    font-size: 1.5rem;
+    padding: 0 10% 5% 10%;
+}
+.modalClose {
+    width: 100%;
+    color: #ffffff;
+    text-align: right;
+    font-size: 50px;
+    font-weight: bold;
+    display: block;
+}
+.modalClose:hover, .modalClose:focus {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.charContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+.charContent {
+    flex: 0 44%;
+    padding: 3%;
+    border-radius: 20px;
+}
+.charContent:hover {
+    background: #102737;
+    cursor: pointer;
+}
+.charImg {
+    float: right;
+    margin: 0 4%;
+    max-width: 75px;
+}
+.charHeading {
+    text-align: left;
+    font-size: 1.5rem;
+    margin: 0;
+}
+.charText {
+    text-align: left;
+    font-size: 1.2rem;
+    padding: 0;
+    margin: 3% 0;
+}
+@media only screen and (max-width: 711px) {
+    .charText {
+        display: none;
+    }
+    .charHeading {
+        font-size: 1rem;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .charHeading {
+        display: none;
+    }
+    .charImg {
+        float: none;
+    }
+}
