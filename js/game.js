@@ -1,12 +1,12 @@
-/* select player = player1 push (eg 'John Snow'); */
 var player1 = { id: 1,
-                name: 'Robert Arryn',
+                name: localStorage.player1name,
                 total: 0,
-                token: 'gfx/tokens/token_arryn.png'};
+                token: localStorage.player1token};
 var player2 = { id: 2,
-                name: 'Oberyn Martell',
+                name: localStorage.player2name,
                 total: 0,
-                token: 'gfx/tokens/token_martell.png'};
+                token: localStorage.player2token};
+
 var players = [player1, player2];
 var currentPlayer = players[0];
 var gameFields = 30;
@@ -14,18 +14,6 @@ var playBtn = document.getElementById('playBtn');
     playBtn.addEventListener('click', rollDice);
     playBtn.disabled = false;
 
-/*
-// Play with keyboard - space button
-document.body.onkeyup = function (pressSpace) {
-    if (pressSpace.keyCode === 32) {
-        if (playBtn.disabled = false) {
-            rollDice();
-        }
-    }
-};
-*/
-
-// Dice rolls and starts game when playBtn is pushed
 function rollDice() {
     var dice = document.getElementById('diceDisplay');
     var bonus = document.getElementById('bonusDisplay');
@@ -62,7 +50,7 @@ function rollDice() {
         if (currentPlayer.total === gameFields) {
             moveToken();
         }
-            bonus.innerHTML = ('<img id="modalIcon" src="gfx/icons/dice_gold.png" width="50%" height="50%"><br>' + currentPlayer.name + '<br> got a bonus turn!');
+            bonus.innerHTML = ('<img id="modalIcon" src="gfx/icons/dice_gold.png" width="100%" height="100%" class="bonusDice">' + currentPlayer.name + '<br> got a bonus turn!');
         }
     } else {
         turnEnd();
@@ -75,21 +63,20 @@ function changePlayer() {
     console.log(player1.name + ' is on field ' + player1.total + '. ' + player2.name + ' is on field ' + player2.total);
     if (currentPlayer === players[0]) {
         currentPlayer = players[1];
-        playersTurn.innerHTML = '<strong>' + currentPlayer.name + '!</strong><br> Roll the dice! ';
+        playersTurn.innerHTML = '<strong>' + currentPlayer.name + '</strong>, <br>it\'s your turn! ';
         return;
     }
     if (currentPlayer === players[1]) {
         currentPlayer = players[0];
-        playersTurn.innerHTML = '<strong>' + currentPlayer.name + '!</strong><br> Roll the dice! ';
+        playersTurn.innerHTML = '<strong>' + currentPlayer.name + '</strong>, <br>it\'s your turn! ';
         return;
     }
 }
 
-// Current token positions - for SR (screen readers), accecability option
+// Current token positions - for SR (screen readers), accessability option
 function currentStats() {
     console.log(currentPlayer.name + ' moves to ' + currentPlayer.total);
 }
-
 
 // Modals
 var modal = document.getElementById('modal');
@@ -182,14 +169,14 @@ function moveToken() {
             tokenPos = 'translate(-224, -30)'; // TRAP - Back to 3
             break;
         case 8:
-            tokenPos = 'translate(-48, -159)'; 
+            tokenPos = 'translate(-48, -159)';
             break;
         case 9:
             tokenPos = 'translate(-79, -210)';
             break;
         case 10:
             tokenPos = 'translate(-148, -203)';
-            break;            
+            break;
         case 11:
             tokenPos = 'translate(-214, -218)';
             break;
@@ -203,31 +190,31 @@ function moveToken() {
             tokenPos = 'translate(-214, -218)'; // TRAP - Back to 11
             break;
         case 15:
-            tokenPos = 'translate(-111, -294)'; 
+            tokenPos = 'translate(-111, -294)';
             break;
         case 16:
             tokenPos = 'translate(-68, -324)';
             break;
         case 17:
-            tokenPos = 'translate(-113, -356)'; 
-            break;    
+            tokenPos = 'translate(-113, -356)';
+            break;
         case 18:
-            tokenPos = 'translate(-179, -367)'; 
+            tokenPos = 'translate(-179, -367)';
             break;
         case 19:
-            tokenPos = 'translate(-163, -426)'; 
-            break; 
+            tokenPos = 'translate(-163, -426)';
+            break;
         case 20:
-            tokenPos = 'translate(-120, -467)'; 
+            tokenPos = 'translate(-120, -467)';
             break;
         case 21:
-            tokenPos = 'translate(-52, -491)'; 
+            tokenPos = 'translate(-52, -491)';
             break;
         case 22:
             tokenPos = 'translate(-89, -522)';
             break;
         case 23:
-            tokenPos = 'translate(-149, -532)'; 
+            tokenPos = 'translate(-149, -532)';
             break;
         case 24:
             tokenPos = 'translate(-179, -367)'; // TRAP - Back to 18
@@ -242,7 +229,7 @@ function moveToken() {
             tokenPos = 'translate(-149, -532)'; // TRAP - Back to 23
             break;
         case 28:
-            tokenPos = 'translate(-101, -672)'; 
+            tokenPos = 'translate(-101, -672)';
             break;
         case 29:
             tokenPos = 'translate(-172, -694)';
@@ -261,9 +248,13 @@ function moveToken() {
 function turnEnd() {
     if (currentPlayer.total >= gameFields) {
         moveToken();
-        window.location.replace('win.html');
+        window.localStorage.removeItem('player1');
+        window.localStorage.removeItem('player2');
+        window.localStorage.setItem('winnerName', currentPlayer.name);
+        window.localStorage.setItem('winnerToken', currentPlayer.token);
         console.log(currentPlayer.name + ' won the game!');
         currentPlayer.total = gameFields;
+        window.location.replace('win.html');
     } else {
         moveToken();
         changePlayer();
@@ -272,7 +263,7 @@ function turnEnd() {
 
 // Get the players on the map
 function gameStart() {
-    playersTurn.innerHTML = '<strong>' + currentPlayer.name + '!</strong><br>Roll the dice! ';     
+    playersTurn.innerHTML = '<strong>' + currentPlayer.name + ',</strong><br>roll the dice! ';
     document.getElementById('token_1').setAttribute('href', player1.token);
     document.getElementById('token_2').setAttribute('href', player2.token);
 }

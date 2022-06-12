@@ -17,20 +17,9 @@
 	<main>
         <div class="modal" id="modal">
             <div id="charSelect" class="modalContent">
-                <h3 id="modalHeading" class="modalHeading">Select Characters</h3>
+                <h3 id="modalHeading" class="modalHeading">Select Player 1</h3>
             </div>
        </div>
-       <!--
-        <div class="modal" id="helpModal">
-            <div class="modalContent">
-                <span class="modalClose">&times;</span>
-                <img id="modalIcon" src="gfx/icons/help.png" width="50%" height="50%">
-                <h3 class="modalHeading">Help</h3>
-                <p class="modalText"><em>About the game:</em> Bla bla.</p>
-                <p class="modalText"><em>Credits:</em> Bla bla.</p>
-            </div>
-       </div>
-       -->
         <div class="board">
             <div class="mapBox">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="map" viewBox="0 0 1242 2208">
@@ -40,17 +29,19 @@
                             <image href="gfx/splash.png" height="100%" width="100%"/>
                         </g>
                     </g>
-                </g>  
+                </g>
                 </svg>
             </div>
             <div class="controls">
                 <button role="button" class="characterBtn" id="characterBtn" aria-label="Roll dice">Select characters</button>
-                <div class="logoContainer" style="display: block;"><img src="gfx/logo.svg" width="100%" class="logo"/></div>
+            </div>
+            <div class="logoContainer">
+                <img src="gfx/logo.svg" class="logo"/>
             </div>
         </div>
 	</main>
 	<script type="text/javascript" src="js/charselect.js"></script>
-	<script type="text/javascript" src="js/game.js"></script>
+	<!-- <script type="text/javascript" src="js/game.js"></script> -->
 </body>
 
 </html>
